@@ -1,0 +1,14 @@
+﻿<Application x:Class="DemoTest.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DemoTest"
+             StartupUri="FrameWindows/MainFrameWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="BackgroundColor" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="MainColor" Color="#B0E5FD" />
+        <SolidColorBrush x:Key="AccentColor" Color="#FDBD40" />
+        <FontFamily x:Key="Tw Cen MT">
+            Tw Cen MT
+        </FontFamily>
+    </Application.Resources>
+</Application>

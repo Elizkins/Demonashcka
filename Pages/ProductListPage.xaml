@@ -1,0 +1,124 @@
+﻿<Page x:Class="DemoTest.Pages.ProductListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:DemoTest.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="ProductListPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10">
+            <Button Content="Добавить"
+                    Height="35"
+                    Background="{StaticResource MainColor}"
+                    Foreground="{StaticResource BackgroundColor}"
+                    FontSize="15"
+                    FontFamily="{StaticResource Tw Cen MT}"
+                    BorderThickness="0" />
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SearchBox"
+                         TextChanged="SearchTextChanged"
+                         Height="30" />
+                <ComboBox Grid.Column="1"
+                          x:Name="SortCBox"
+                          SelectedIndex="0"
+                          Height="30"
+                          Width="150"
+                          Margin="15, 0" 
+                          SelectionChanged="SortSelectedBox"/>
+                <ComboBox Grid.Column="2"
+                          SelectedIndex="0"
+                          x:Name="FilterCBox"
+                          Height="30"
+                          Width="150"
+                          SelectionChanged="FilterSelectedBox" />
+            </Grid>
+            <ListView Grid.Row="1"
+                      x:Name="ProductList"
+                      BorderThickness="0"
+                      HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1"
+                                BorderBrush="Black"
+                                HorizontalAlignment="Stretch"
+                                PreviewMouseLeftButtonDown="OpenProductEditPage">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Image}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Height="70"
+                                       Width="70"
+                                       Margin="10" />
+                                <StackPanel Grid.Column="1"
+                                            Margin="0, 10">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding ProductType.Title}"
+                                                   Foreground="Black"
+                                                   FontSize="13"
+                                                   FontFamily="{StaticResource Tw Cen MT}"
+                                                   VerticalAlignment="Center"
+                                                   Margin="15, 0" />
+                                        <TextBlock Text="|"
+                                                   Foreground="Black"
+                                                   FontSize="13"
+                                                   FontFamily="{StaticResource Tw Cen MT}"
+                                                   VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Title}"
+                                                   Foreground="Black"
+                                                   FontSize="13"
+                                                   FontFamily="{StaticResource Tw Cen MT}"
+                                                   VerticalAlignment="Center"
+                                                   Margin="15, 0" />
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding MaterialList, StringFormat='Материалы: {0}'}"
+                                               Foreground="Black"
+                                               FontSize="13"
+                                               FontFamily="{StaticResource Tw Cen MT}"
+                                               VerticalAlignment="Center"
+                                               Margin="15, 0" />
+                                </StackPanel>
+                                <TextBlock Grid.Column="2"
+                                           Text="{Binding MaterialCost, StringFormat='{}{0:0} руб.'}"
+                                           TextWrapping="Wrap"
+                                           Foreground="Black"
+                                           FontSize="13"
+                                           FontFamily="{StaticResource Tw Cen MT}"
+                                           HorizontalAlignment="Right"
+                                           Margin="10" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Height="25"
+                        HorizontalAlignment="Right"
+                        x:Name="PageSPanel" />
+        </Grid>
+    </Grid>
+</Page>
